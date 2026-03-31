@@ -1,0 +1,135 @@
+<section class="fz-featured-section">
+  <div class="container">
+    <div class="fz-featured-section__header">
+      <p class="fz-featured-section__eyebrow">Hand-picked for You</p>
+      <h2 class="fz-featured-section__title">{{ section.settings.title }}</h2>
+      <div class="fz-section-divider"></div>
+    </div>
+
+    {% if section.settings.collection != blank %}
+      {% assign collection = collections[section.settings.collection] %}
+
+      <div class="fz-featured-section__grid">
+        {% for product in collection.products limit: 4 %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+
+      <div class="fz-featured-section__cta">
+        <a href="{{ collection.url }}" class="fz-featured-btn">
+          View Full Collection
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.fz-featured-section {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: #ffffff;
+}
+
+.fz-featured-section__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.fz-featured-section__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin: 0 0 10px;
+}
+
+.fz-featured-section__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: #1a0533;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.fz-section-divider {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  border-radius: 99px;
+  margin: 0 auto;
+}
+
+.fz-featured-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+
+.fz-featured-section__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.fz-featured-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: transparent;
+  color: #7c3aed;
+  border: 2px solid #7c3aed;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.fz-featured-btn:hover {
+  background: #7c3aed;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 989px) {
+  .fz-featured-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 524px) {
+  .fz-featured-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

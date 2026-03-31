@@ -1,0 +1,111 @@
+{% if section.settings.show_announcement %}
+  <div class="fz-announcement-bar" role="banner">
+    <div class="fz-announcement-bar__track-wrapper">
+      <div class="fz-announcement-bar__track" id="fz-ticker">
+        <span>🔥 SALE UP TO 40% OFF — Use code <strong>FLYNTRA15</strong></span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <span>🚀 FREE SHIPPING on all prepaid orders above ₹999</span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <span>✨ NEW ARRIVALS — Shop the latest drops now!</span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <span>🔒 100% Secure Payments &amp; Easy 7-Day Returns</span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <!-- Duplicate for seamless loop -->
+        <span>🔥 SALE UP TO 40% OFF — Use code <strong>FLYNTRA15</strong></span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <span>🚀 FREE SHIPPING on all prepaid orders above ₹999</span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <span>✨ NEW ARRIVALS — Shop the latest drops now!</span>
+        <span class="fz-announcement-bar__sep">✦</span>
+        <span>🔒 100% Secure Payments &amp; Easy 7-Day Returns</span>
+        <span class="fz-announcement-bar__sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .fz-announcement-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 70;
+      background: linear-gradient(90deg, #4c1d95, #6d28d9, #7c3aed, #6d28d9, #4c1d95);
+      background-size: 300% 100%;
+      animation: fz-ticker-gradient 8s ease infinite;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+    }
+
+    @keyframes fz-ticker-gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .fz-announcement-bar__track-wrapper {
+      overflow: hidden;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    .fz-announcement-bar__track {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      white-space: nowrap;
+      animation: fz-ticker-scroll 32s linear infinite;
+      padding: 0.4rem 0;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fz-announcement-bar__track strong {
+      font-weight: 800;
+      color: #fde68a;
+    }
+
+    .fz-announcement-bar__track:hover {
+      animation-play-state: paused;
+    }
+
+    .fz-announcement-bar__sep {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.55rem;
+    }
+
+    @keyframes fz-ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Free shipping on all prepaid orders above ₹999"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link (optional)"
+    }
+  ]
+}
+{% endschema %}

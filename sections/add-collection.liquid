@@ -1,0 +1,220 @@
+<section class="fz-shop-collection">
+  <div class="container">
+
+    <div class="fz-shop-collection__header">
+      <p class="fz-shop-collection__eyebrow">Browse Categories</p>
+      <h2 class="fz-shop-collection__title">Shop by Collection</h2>
+      <div class="fz-section-divider"></div>
+    </div>
+
+    <div class="fz-shop-collection__grid">
+
+      <!-- CARD 1 -->
+      <a href="/collections/polo" class="fz-shop-collection__card">
+        <div class="fz-shop-collection__img-wrap">
+          <img src="https://images.unsplash.com/photo-1625910513413-c23b8bb81cba?q=80&w=800" alt="Polos" loading="lazy">
+        </div>
+        <div class="fz-shop-collection__info">
+          <h3>Polos</h3>
+          <span class="fz-shop-collection__arrow">→</span>
+        </div>
+      </a>
+
+      <!-- CARD 2 -->
+      <a href="/collections/T-shirts" class="fz-shop-collection__card">
+        <div class="fz-shop-collection__img-wrap">
+          <img src="https://images.unsplash.com/photo-1696086152504-4843b2106ab4?q=80&w=800" alt="T-Shirts" loading="lazy">
+        </div>
+        <div class="fz-shop-collection__info">
+          <h3>T-Shirts</h3>
+          <span class="fz-shop-collection__arrow">→</span>
+        </div>
+      </a>
+
+      <!-- CARD 3 -->
+      <a href="/collections/joggers" class="fz-shop-collection__card">
+        <div class="fz-shop-collection__img-wrap">
+          <img src="https://images.unsplash.com/photo-1580906853305-5702e648164e?q=80&w=800" alt="Joggers" loading="lazy">
+        </div>
+        <div class="fz-shop-collection__info">
+          <h3>Joggers</h3>
+          <span class="fz-shop-collection__arrow">→</span>
+        </div>
+      </a>
+
+      <!-- CARD 4 -->
+      <a href="/collections/Shorts" class="fz-shop-collection__card">
+        <div class="fz-shop-collection__img-wrap">
+          <img src="https://plus.unsplash.com/premium_photo-1674828600712-7d0caab39109?q=80&w=800" alt="Shorts" loading="lazy">
+        </div>
+        <div class="fz-shop-collection__info">
+          <h3>Shorts</h3>
+          <span class="fz-shop-collection__arrow">→</span>
+        </div>
+      </a>
+
+      <!-- CARD 5 -->
+      <a href="/collections/Activewear" class="fz-shop-collection__card">
+        <div class="fz-shop-collection__img-wrap">
+          <img src="https://images.unsplash.com/photo-1595909315417-2edd382a56dc?q=80&w=800" alt="Activewear" loading="lazy">
+        </div>
+        <div class="fz-shop-collection__info">
+          <h3>Activewear</h3>
+          <span class="fz-shop-collection__arrow">→</span>
+        </div>
+      </a>
+
+      <!-- CARD 6 -->
+      <a href="/collections/Travel Essentials" class="fz-shop-collection__card">
+        <div class="fz-shop-collection__img-wrap">
+          <img src="https://images.unsplash.com/photo-1531938716357-224c16b5ace3?q=80&w=800" alt="Travel Essentials" loading="lazy">
+        </div>
+        <div class="fz-shop-collection__info">
+          <h3>Travel Essentials</h3>
+          <span class="fz-shop-collection__arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ===========================
+   SHOP BY COLLECTION — Unified Theme
+   =========================== */
+.fz-shop-collection {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: linear-gradient(135deg, #f8f7ff 0%, #f1f0f9 100%);
+}
+
+.fz-shop-collection__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.fz-shop-collection__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin: 0 0 10px;
+}
+
+.fz-shop-collection__title {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: #1a0533;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+/* GRID */
+.fz-shop-collection__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* CARD */
+.fz-shop-collection__card {
+  text-decoration: none;
+  color: #1a0533;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  box-shadow: 0 2px 16px rgba(26, 5, 51, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.fz-shop-collection__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.fz-shop-collection__img-wrap {
+  overflow: hidden;
+}
+
+.fz-shop-collection__card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.fz-shop-collection__card:hover img {
+  transform: scale(1.06);
+}
+
+.fz-shop-collection__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.fz-shop-collection__info h3 {
+  font-family: var(--font-body, "Outfit", "Inter", sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a0533;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.fz-shop-collection__arrow {
+  font-size: 1rem;
+  color: #7c3aed;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fz-shop-collection__card:hover .fz-shop-collection__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 989px) {
+  .fz-shop-collection__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 749px) {
+  .fz-shop-collection {
+    padding: 60px 0;
+  }
+  .fz-shop-collection__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .fz-shop-collection__card img {
+    height: 200px;
+  }
+  .fz-shop-collection__info {
+    padding: 12px 14px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "presets": [
+    {
+      "name": "Collection Grid"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,16 @@
+<article class="product-card">
+  {% if product %}
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.price | money }}</p>
+  {% else %}
+    <h3>Product title</h3>
+    <p>{{ 1999 | money }}</p>
+  {% endif %}
+</article>
+
+{% schema %}
+{
+  "name": "Product card",
+  "settings": []
+}
+{% endschema %}

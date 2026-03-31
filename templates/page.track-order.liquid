@@ -1,0 +1,183 @@
+<section class="fz-track-order section">
+  <div class="fz-track-order__wrap container">
+    <div class="fz-track-order__card">
+      <p class="fz-track-order__brand">FlyntraZone</p>
+      <h1>Track Your Order</h1>
+      <p class="fz-track-order__intro">Enter your order details below to check your latest shipping status.</p>
+
+      <form class="fz-track-order__form" id="TrackOrderForm" novalidate>
+        <label for="TrackOrderNumber">Order Number</label>
+        <input id="TrackOrderNumber" name="order_number" type="text" placeholder="#1001" required>
+
+        <label for="TrackOrderEmail">Email</label>
+        <input id="TrackOrderEmail" name="email" type="email" placeholder="you@example.com" required>
+
+        <button type="submit">Track Order</button>
+      </form>
+
+      <p class="fz-track-order__status" id="TrackOrderMessage" aria-live="polite"></p>
+
+      <div class="fz-track-order__logic">
+        <p>Shopify order status opens using your order's unique status link:</p>
+        <code>/orders/[order_id]/authenticate?key=[token]</code>
+        <p>Use the status link from your order confirmation email for exact live tracking.</p>
+      </div>
+
+      <ul class="fz-track-order__trust" role="list">
+        <li>Shipped within 24hrs</li>
+        <li>Real-time tracking</li>
+        <li>Easy returns</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fz-track-order {
+    min-height: 100vh;
+    background: #111111;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+  }
+
+  .fz-track-order__wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .fz-track-order__card {
+    width: min(100%, 620px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: clamp(1.4rem, 3.5vw, 2.2rem);
+  }
+
+  .fz-track-order__brand {
+    margin: 0 0 0.25rem;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fz-track-order h1 {
+    margin: 0;
+    color: #ffffff;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .fz-track-order__intro {
+    margin: 0.5rem 0 1.2rem;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .fz-track-order__form {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .fz-track-order__form label {
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .fz-track-order__form input {
+    min-height: 2.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .fz-track-order__form input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .fz-track-order__form button {
+    margin-top: 0.8rem;
+    min-height: 2.9rem;
+    border: 1px solid #ff4500;
+    background: #ff4500;
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .fz-track-order__form button:hover {
+    filter: brightness(0.94);
+  }
+
+  .fz-track-order__status {
+    margin: 1rem 0 0;
+    font-size: 0.88rem;
+    color: #ffb29a;
+    min-height: 1.2rem;
+  }
+
+  .fz-track-order__logic {
+    margin-top: 1.1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1rem;
+  }
+
+  .fz-track-order__logic p {
+    margin: 0 0 0.55rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.86rem;
+  }
+
+  .fz-track-order__logic code {
+    display: inline-block;
+    margin-bottom: 0.55rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 0.35rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .fz-track-order__trust {
+    margin-top: 1.2rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .fz-track-order__trust li {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.88);
+  }
+</style>
+
+<script>
+  (function () {
+    var form = document.getElementById("TrackOrderForm");
+    var message = document.getElementById("TrackOrderMessage");
+    if (!form || !message) return;
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var orderNumber = form.order_number.value.trim();
+      var email = form.email.value.trim();
+
+      if (!orderNumber || !email) {
+        message.textContent = "Please enter both order number and email.";
+        return;
+      }
+
+      var orderLookupUrl = "/account/orders";
+      message.innerHTML = 'For secure tracking, use your status link from the confirmation email or visit <a href="' + orderLookupUrl + '">your account orders</a>.';
+    });
+  })();
+</script>

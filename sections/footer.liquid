@@ -1,0 +1,329 @@
+<footer class="fz-footer">
+  {% assign contact_page = pages['contact'] %}
+  {% assign faq_page = pages['faq'] %}
+  {% assign about_page = pages['about'] %}
+
+  <div class="fz-footer__top container">
+    <div class="fz-footer__col">
+      <a class="fz-footer__brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {% if section.settings.logo != blank %}
+          <img
+            src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}"
+            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            width="{{ section.settings.logo_width }}"
+            height="auto"
+            loading="lazy"
+          >
+        {% else %}
+          <span>{{ section.settings.brand_name | default: shop.name }}</span>
+        {% endif %}
+      </a>
+      {% if section.settings.tagline != blank %}
+        <p class="fz-footer__tagline">{{ section.settings.tagline }}</p>
+      {% endif %}
+    </div>
+
+    <div class="fz-footer__col">
+      <h3 class="fz-footer__heading">{{ section.settings.quick_links_title }}</h3>
+      <ul class="fz-footer__links">
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        <li><a href="{{ routes.collections_url }}">Catalog</a></li>
+        <li><a href="{{ contact_page.url | default: '/pages/contact' }}">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="fz-footer__col">
+      <h3 class="fz-footer__heading">{{ section.settings.support_links_title }}</h3>
+      <ul class="fz-footer__links">
+        <li><a href="{{ shop.shipping_policy.url | default: '/policies/shipping-policy' }}">Shipping Policy</a></li>
+        <li><a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}">Returns</a></li>
+        <li><a href="{{ faq_page.url | default: '/pages/faq' }}">FAQ</a></li>
+        <li><a href="{{ about_page.url | default: '/pages/about' }}">About Us</a></li>
+      </ul>
+    </div>
+
+    <div class="fz-footer__col">
+      <h3 class="fz-footer__heading">{{ section.settings.newsletter_title }}</h3>
+      {% if section.settings.newsletter_text != blank %}
+        <p class="fz-footer__newsletter-copy">{{ section.settings.newsletter_text }}</p>
+      {% endif %}
+      <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="fz-footer__newsletter">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="&#10003;">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="FooterEmail-{{ section.id }}">Email</label>
+        <input
+          id="FooterEmail-{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          placeholder="Enter your email"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          required
+        >
+        <button type="submit">{{ section.settings.newsletter_button_label }}</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="fz-footer__bottom">
+    <div class="container fz-footer__bottom-inner">
+      <p class="fz-footer__copyright">
+        {{ section.settings.copyright_text | default: shop.name }}
+        &copy; {{ 'now' | date: '%Y' }}
+      </p>
+      <ul class="fz-footer__payments" role="list">
+        {% for type in shop.enabled_payment_types %}
+          <li>{{ type | payment_type_svg_tag }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fz-footer {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a0533 100%);
+    color: #ffffff;
+    margin-top: 0;
+  }
+
+  .fz-footer__top {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+    gap: 2rem;
+    padding: 4rem 1.25rem 3rem;
+  }
+
+  .fz-footer__brand {
+    display: inline-flex;
+    color: #ffffff;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .fz-footer__brand img {
+    width: auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .fz-footer__tagline {
+    margin: 1rem 0 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 28ch;
+  }
+
+  .fz-footer__heading {
+    margin: 0 0 1rem;
+    color: #ffffff;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .fz-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.62rem;
+  }
+
+  .fz-footer__links a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    transition: color 160ms ease;
+  }
+
+  .fz-footer__links a:hover {
+    color: #a78bfa;
+  }
+
+  .fz-footer__newsletter-copy {
+    margin: 0 0 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+
+  .fz-footer__newsletter {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .fz-footer__newsletter input {
+    flex: 1;
+    min-height: 2.65rem;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: transparent;
+    color: #ffffff;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .fz-footer__newsletter input::placeholder {
+    color: rgba(255, 255, 255, 0.52);
+  }
+
+  .fz-footer__newsletter button {
+    min-height: 2.65rem;
+    border: 1px solid #7c3aed;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #ffffff;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 180ms ease;
+  }
+
+  .fz-footer__newsletter button:hover {
+    filter: brightness(0.93);
+  }
+
+  .fz-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .fz-footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .fz-footer__copyright {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .fz-footer__payments {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .fz-footer__payments svg {
+    width: 38px;
+    height: 24px;
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  @media (max-width: 989px) {
+    .fz-footer__top {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.6rem;
+      padding-top: 3rem;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .fz-footer__top {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2.6rem 1rem 2rem;
+    }
+
+    .fz-footer__newsletter {
+      flex-direction: column;
+    }
+
+    .fz-footer__bottom-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.95rem 1rem 1.2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Brand logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 80,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 150
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name fallback",
+      "default": "FlyntraZone"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Luxury streetwear for bold everyday icons."
+    },
+    {
+      "type": "text",
+      "id": "quick_links_title",
+      "label": "Quick links heading",
+      "default": "Quick links"
+    },
+    {
+      "type": "text",
+      "id": "support_links_title",
+      "label": "Customer service heading",
+      "default": "Customer service"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter heading",
+      "default": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_text",
+      "label": "Newsletter text",
+      "default": "Sign up for exclusive drops, private offers, and style updates."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Newsletter button label",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "FlyntraZone"
+    }
+  ]
+}
+{% endschema %}

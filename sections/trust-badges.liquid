@@ -1,0 +1,133 @@
+<section class="trust-badges section">
+  <div class="container">
+
+    <div class="trust-slider">
+      <div class="trust-track">
+
+        <div class="trust-item">
+          <span>🚚</span>
+          <p>Free Shipping</p>
+        </div>
+
+        <div class="trust-item">
+          <span>🔒</span>
+          <p>Secure Payment</p>
+        </div>
+
+        <div class="trust-item">
+          <span>🔁</span>
+          <p>Easy Returns</p>
+        </div>
+
+        <div class="trust-item">
+          <span>💎</span>
+          <p>Premium Quality</p>
+        </div>
+
+        <!-- duplicate for smooth loop -->
+        <div class="trust-item">
+          <span>🚚</span>
+          <p>Free Shipping</p>
+        </div>
+
+        <div class="trust-item">
+          <span>🔒</span>
+          <p>Secure Payment</p>
+        </div>
+
+        <div class="trust-item">
+          <span>🔁</span>
+          <p>Easy Returns</p>
+        </div>
+
+        <div class="trust-item">
+          <span>💎</span>
+          <p>Premium Quality</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ===== TRUST BADGES SLIDER ===== */
+
+.trust-badges {
+  background: linear-gradient(135deg, #1a0533, #2d1054);
+  padding: 16px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* slider */
+.trust-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+/* moving track */
+.trust-track {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scrollTrust 18s linear infinite;
+}
+
+/* item */
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* icon */
+.trust-item span {
+  font-size: 16px;
+}
+
+/* animation */
+@keyframes scrollTrust {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* hover pause (premium feel) */
+.trust-slider:hover .trust-track {
+  animation-play-state: paused;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .trust-track {
+    gap: 30px;
+  }
+
+  .trust-item {
+    font-size: 11px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Trust Badges",
+  "presets": [
+    {
+      "name": "Trust Badges"
+    }
+  ]
+}
+{% endschema %}

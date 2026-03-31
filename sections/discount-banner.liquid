@@ -1,0 +1,250 @@
+<section class="fz-discount-banner">
+  <div class="fz-discount-banner__inner">
+
+    <!-- Banner 1: Flash Sale -->
+    <div class="fz-discount-banner__card fz-discount-banner__card--fire">
+      <div class="fz-discount-banner__badge">🔥 Flash Sale</div>
+      <h3 class="fz-discount-banner__title">UP TO 40% OFF</h3>
+      <p class="fz-discount-banner__subtitle">On all oversized tees & hoodies. Limited time only.</p>
+      <div class="fz-discount-banner__actions">
+        <a href="/collections" class="fz-discount-banner__btn fz-discount-banner__btn--primary">Shop Now</a>
+        <div class="fz-discount-banner__countdown" id="fz-countdown-1" data-end="2026-04-10T00:00:00"></div>
+      </div>
+    </div>
+
+    <!-- Banner 2: New Arrival -->
+    <div class="fz-discount-banner__card fz-discount-banner__card--purple">
+      <div class="fz-discount-banner__badge">✨ New Arrival</div>
+      <h3 class="fz-discount-banner__title">FIRST ORDER<br>EXTRA 15% OFF</h3>
+      <p class="fz-discount-banner__subtitle">Use code <strong>FLYNTRA15</strong> at checkout. Welcome gift!</p>
+      <div class="fz-discount-banner__actions">
+        <a href="/collections" class="fz-discount-banner__btn fz-discount-banner__btn--light">Claim Offer</a>
+        <div class="fz-discount-banner__code-box">FLYNTRA15</div>
+      </div>
+    </div>
+
+    <!-- Banner 3: Free Shipping -->
+    <div class="fz-discount-banner__card fz-discount-banner__card--teal">
+      <div class="fz-discount-banner__badge">🚀 Free Shipping</div>
+      <h3 class="fz-discount-banner__title">FREE DELIVERY<br>ABOVE ₹999</h3>
+      <p class="fz-discount-banner__subtitle">Pan India delivery on all prepaid orders above ₹999!</p>
+      <div class="fz-discount-banner__actions">
+        <a href="/collections/all" class="fz-discount-banner__btn fz-discount-banner__btn--primary">Browse All</a>
+        <div class="fz-discount-banner__trust">✓ 3-5 Day Delivery</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.fz-discount-banner {
+  padding: clamp(60px, 8vw, 100px) 20px;
+  background: linear-gradient(135deg, #0d0d1a 0%, #1a0533 100%);
+}
+
+.fz-discount-banner__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.fz-discount-banner__card {
+  border-radius: 20px;
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.fz-discount-banner__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Animated background shimmer */
+.fz-discount-banner__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.fz-discount-banner__card--fire {
+  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 40%, #b45309 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.fz-discount-banner__card--purple {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4c1d95 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.fz-discount-banner__card--teal {
+  background: linear-gradient(135deg, #042f2e 0%, #115e59 40%, #0e7490 100%);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.fz-discount-banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fz-discount-banner__title {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.fz-discount-banner__subtitle {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.fz-discount-banner__subtitle strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.fz-discount-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.fz-discount-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.fz-discount-banner__btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.fz-discount-banner__btn--primary {
+  background: #ffffff;
+  color: #111111;
+}
+
+.fz-discount-banner__btn--light {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.fz-discount-banner__countdown {
+  font-family: "Bebas Neue", monospace;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+.fz-discount-banner__code-box {
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px dashed rgba(255,255,255,0.4);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.fz-discount-banner__code-box:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fz-discount-banner__trust {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 989px) {
+  .fz-discount-banner__inner {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+</style>
+
+<script>
+(function () {
+  var el = document.getElementById('fz-countdown-1');
+  if (!el) return;
+  var endDate = new Date(el.dataset.end);
+  function updateCountdown() {
+    var now = new Date();
+    var diff = endDate - now;
+    if (diff <= 0) { el.textContent = 'Sale Ended'; return; }
+    var d = Math.floor(diff / (1000*60*60*24));
+    var h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    var m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    var s = Math.floor((diff % (1000*60)) / 1000);
+    el.textContent = d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+
+// Copy code on click
+document.querySelectorAll('.fz-discount-banner__code-box').forEach(function(box) {
+  box.addEventListener('click', function() {
+    navigator.clipboard && navigator.clipboard.writeText(box.textContent.trim());
+    var orig = box.textContent;
+    box.textContent = '✓ Copied!';
+    setTimeout(function() { box.textContent = orig; }, 1500);
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Discount Banners",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Discount Banners"
+    }
+  ]
+}
+{% endschema %}

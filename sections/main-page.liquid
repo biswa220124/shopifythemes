@@ -1,0 +1,54 @@
+<section class="fz-main-page section">
+  <div class="container fz-main-page__wrap">
+    <h1>{{ page.title }}</h1>
+    <div class="fz-main-page__content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fz-main-page {
+    background: #ececec;
+    color: #111111;
+  }
+  .fz-main-page__wrap {
+    width: min(100%, 860px);
+  }
+  .fz-main-page h1 {
+    margin: 0 0 1rem;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .fz-main-page__content {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.75;
+    color: #222222;
+  }
+  .fz-main-page__content h2,
+  .fz-main-page__content h3,
+  .fz-main-page__content h4 {
+    margin: 1.3rem 0 0.8rem;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #111111;
+  }
+  .fz-main-page__content p,
+  .fz-main-page__content ul,
+  .fz-main-page__content ol {
+    margin: 0 0 1rem;
+  }
+  .fz-main-page__content a {
+    color: #ff4500;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main page",
+  "settings": []
+}
+{% endschema %}

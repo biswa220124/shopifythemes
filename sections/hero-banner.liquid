@@ -1,0 +1,384 @@
+<section
+  class="hero-banner hero-banner--{{ section.id }}"
+  id="HeroBanner-{{ section.id }}"
+  style="
+    --hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    {% if section.settings.background_image != blank %}
+      --hero-bg-image: url('{{ section.settings.background_image | image_url: width: 2400 }}');
+    {% endif %}
+  "
+>
+  <div class="hero-banner__carousel" data-hero-carousel>
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <div
+          class="hero-banner__slide{% if forloop.first %} is-active{% endif %}"
+          data-hero-slide
+          {{ block.shopify_attributes }}
+          {% if block.settings.image != blank %}
+            style="background-image: url('{{ block.settings.image | image_url: width: 2400 }}');"
+          {% endif %}
+        ></div>
+      {% endfor %}
+    {% else %}
+      {% assign fallback_images = "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2400&q=80,https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=2400&q=80,https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=2400&q=80,https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2400&q=80" | split: "," %}
+      {% for image_url in fallback_images %}
+        <div
+          class="hero-banner__slide{% if forloop.first %} is-active{% endif %}"
+          data-hero-slide
+          style="background-image: url('{{ image_url }}');"
+        ></div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <div class="hero-banner__overlay"></div>
+  <div class="hero-banner__content container">
+    <p class="hero-banner__subheading">
+      {{ section.settings.subheading }}
+    </p>
+    <h1 class="hero-banner__heading">
+      {{ section.settings.heading }}
+    </h1>
+    <div class="hero-banner__actions">
+      {% if section.settings.button_1_text != blank %}
+        <a class="hero-banner__button hero-banner__button--primary" href="/collections">
+          {{ section.settings.button_1_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.button_2_text != blank %}
+        <a class="hero-banner__button hero-banner__button--secondary" href="/collections/all">
+          {{ section.settings.button_2_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="hero-banner__dots" data-hero-dots></div>
+</section>
+
+<style>
+  .hero-banner--{{ section.id }} {
+    --hero-text: #ffffff;
+    --hero-muted: rgba(255, 255, 255, 0.9);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #111111;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__carousel {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #111111;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__slide {
+    position: absolute;
+    inset: 0;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 850ms ease;
+    will-change: opacity;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__slide.is-active {
+    opacity: 1;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__carousel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0.2) 58%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, calc(var(--hero-overlay-opacity) * 0.75)) 0%,
+      rgba(0, 0, 0, var(--hero-overlay-opacity)) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: calc(clamp(5rem, 12vh, 9rem) + 40px) 1.25rem 4rem;
+    color: var(--hero-text);
+    animation: heroContentIn-{{ section.id }} 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__subheading {
+    margin: 0 0 1rem;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(0.84rem, 1vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--hero-muted);
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__heading {
+    margin: 0 0 2rem;
+    max-width: 13ch;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.45),
+      0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  @keyframes heroContentIn-{{ section.id }} {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.8rem;
+    padding: 0.78rem 1.5rem;
+    border: 1px solid transparent;
+    color: var(--hero-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 200ms ease;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__button--primary {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    border-color: #7c3aed;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__button--primary:hover {
+    background: linear-gradient(135deg, #6d28d9, #5b21b6);
+    border-color: #6d28d9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.55);
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__button--secondary {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__button--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__button:focus-visible {
+    outline: 2px solid var(--hero-text);
+    outline-offset: 2px;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 1.3rem;
+    z-index: 3;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__dot {
+    width: 0.56rem;
+    height: 0.56rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 180ms ease, transform 180ms ease;
+  }
+
+  .hero-banner--{{ section.id }} .hero-banner__dot.is-active {
+    background: #ffffff;
+    transform: scale(1.08);
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-banner--{{ section.id }} {
+      min-height: 92vh;
+    }
+
+    .hero-banner--{{ section.id }} .hero-banner__content {
+      padding: calc(5rem + 40px) 1rem 3rem;
+    }
+
+    .hero-banner--{{ section.id }} .hero-banner__subheading {
+      letter-spacing: 0.08em;
+    }
+
+    .hero-banner--{{ section.id }} .hero-banner__button {
+      flex: 1 1 100%;
+    }
+
+    .hero-banner--{{ section.id }} .hero-banner__dots {
+      bottom: 1rem;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var sectionEl = document.getElementById("HeroBanner-{{ section.id }}");
+    if (!sectionEl || sectionEl.dataset.carouselInit === "true") return;
+    sectionEl.dataset.carouselInit = "true";
+
+    var slides = sectionEl.querySelectorAll("[data-hero-slide]");
+    var dotsWrap = sectionEl.querySelector("[data-hero-dots]");
+    if (!slides.length || !dotsWrap) return;
+
+    var currentIndex = 0;
+    var intervalMs = 4000;
+
+    var setActive = function (index) {
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle("is-active", i === index);
+      });
+
+      var dots = dotsWrap.querySelectorAll(".hero-banner__dot");
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === index);
+      });
+      currentIndex = index;
+    };
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "hero-banner__dot" + (i === 0 ? " is-active" : "");
+      dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+      dot.addEventListener("click", function () {
+        setActive(i);
+      });
+      dotsWrap.appendChild(dot);
+    });
+
+    if (slides.length < 2) return;
+
+    setInterval(function () {
+      var nextIndex = (currentIndex + 1) % slides.length;
+      setActive(nextIndex);
+    }, intervalMs);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Modern tailoring for timeless wardrobes"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Street luxury. Cinematic attitude."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 55
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Button 1 text",
+      "default": "Shop Men"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Button 2 text",
+      "default": "Shop Women"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Carousel image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Hero banner",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

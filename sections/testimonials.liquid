@@ -1,0 +1,296 @@
+<section class="fz-testimonials">
+  <div class="fz-testimonials__container container">
+
+    <div class="fz-testimonials__header">
+      <p class="fz-testimonials__label">Customer Love</p>
+      <h2 class="fz-testimonials__title">What Our Customers Say</h2>
+    </div>
+
+    <div class="fz-testimonials__grid">
+
+      <div class="fz-testimonials__card">
+        <div class="fz-testimonials__stars">★★★★★</div>
+        <p class="fz-testimonials__quote">"Absolutely obsessed with my FlyntraZone hoodie. The fabric quality is insane for the price — super soft, heavy, and it looks exactly like the photos. Will definitely be ordering again."</p>
+        <div class="fz-testimonials__author">
+          <div class="fz-testimonials__avatar" aria-hidden="true">R</div>
+          <div>
+            <strong>Ritika S.</strong>
+            <span>Mumbai, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fz-testimonials__card fz-testimonials__card--featured">
+        <div class="fz-testimonials__stars">★★★★★</div>
+        <p class="fz-testimonials__quote">"Fast shipping, great quality. The oversized tee fit me perfectly and the print didn't crack after washing. FlyntraZone is now my go-to brand for basics."</p>
+        <div class="fz-testimonials__author">
+          <div class="fz-testimonials__avatar" style="background: #7c3aed;" aria-hidden="true">A</div>
+          <div>
+            <strong>Arjun M.</strong>
+            <span>Bangalore, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fz-testimonials__card">
+        <div class="fz-testimonials__stars">★★★★★</div>
+        <p class="fz-testimonials__quote">"Bought the navy polo for my husband and he loved it. Looks premium, feels premium. The packaging was also really nice — felt like a luxury brand experience."</p>
+        <div class="fz-testimonials__author">
+          <div class="fz-testimonials__avatar" style="background: #db2777;" aria-hidden="true">P</div>
+          <div>
+            <strong>Priya K.</strong>
+            <span>Delhi, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fz-testimonials__card">
+        <div class="fz-testimonials__stars">★★★★☆</div>
+        <p class="fz-testimonials__quote">"Really good streetwear brand. The drop shoulder hoodie fits exactly as described and the color is rich. Delivery was surprisingly fast too. Will recommend to friends!"</p>
+        <div class="fz-testimonials__author">
+          <div class="fz-testimonials__avatar" style="background: #059669;" aria-hidden="true">S</div>
+          <div>
+            <strong>Sahil T.</strong>
+            <span>Pune, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fz-testimonials__card">
+        <div class="fz-testimonials__stars">★★★★★</div>
+        <p class="fz-testimonials__quote">"I was skeptical at first but the sweatshirt I ordered blew my mind. Perfect stitching, great weight, no fading after multiple washes. 10/10 would buy again."</p>
+        <div class="fz-testimonials__author">
+          <div class="fz-testimonials__avatar" style="background: #d97706;" aria-hidden="true">N</div>
+          <div>
+            <strong>Neha R.</strong>
+            <span>Hyderabad, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fz-testimonials__card">
+        <div class="fz-testimonials__stars">★★★★★</div>
+        <p class="fz-testimonials__quote">"Customer service was top notch when I had a sizing question. They helped me choose the right fit and the product arrived within 3 days. Love this brand!"</p>
+        <div class="fz-testimonials__author">
+          <div class="fz-testimonials__avatar" style="background: #0ea5e9;" aria-hidden="true">K</div>
+          <div>
+            <strong>Karan B.</strong>
+            <span>Chennai, India</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fz-testimonials__rating-summary">
+      <div class="fz-testimonials__rating-number">4.9</div>
+      <div>
+        <div class="fz-testimonials__big-stars">★★★★★</div>
+        <p>Based on 200+ verified reviews</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.fz-testimonials {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-testimonials::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.fz-testimonials__container {
+  position: relative;
+  z-index: 1;
+}
+
+.fz-testimonials__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.fz-testimonials__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8b5cf6;
+  margin: 0 0 0.6rem;
+}
+
+.fz-testimonials__title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fz-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 52px;
+}
+
+.fz-testimonials__card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.fz-testimonials__card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(139, 92, 246, 0.06);
+}
+
+.fz-testimonials__card--featured {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(139, 92, 246, 0.08);
+  position: relative;
+}
+
+.fz-testimonials__card--featured::before {
+  content: '⭐ Most Loved';
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.fz-testimonials__stars {
+  color: #f59e0b;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.fz-testimonials__quote {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0 0 20px;
+  font-style: italic;
+}
+
+.fz-testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fz-testimonials__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #8b5cf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.fz-testimonials__author strong {
+  display: block;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.fz-testimonials__author span {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.78rem;
+}
+
+.fz-testimonials__rating-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.fz-testimonials__rating-number {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 4rem;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.fz-testimonials__big-stars {
+  color: #f59e0b;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+
+.fz-testimonials__rating-summary p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+@media (max-width: 989px) {
+  .fz-testimonials__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 749px) {
+  .fz-testimonials {
+    padding: 60px 16px;
+  }
+  .fz-testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+  .fz-testimonials__rating-summary {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

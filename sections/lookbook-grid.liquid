@@ -1,0 +1,245 @@
+<section class="fz-lookbook">
+  <div class="container fz-lookbook__header">
+    <p class="fz-lookbook__eyebrow">Style Inspiration</p>
+    <h2 class="fz-lookbook__title">The Lookbook</h2>
+    <p class="fz-lookbook__sub">How our community wears FlyntraZone. Tag <strong>@flyntrazone</strong> to be featured.</p>
+  </div>
+
+  <div class="fz-lookbook__grid">
+
+    <!-- Row: 2 tall + 1 tall -->
+    <a href="/collections" class="fz-lookbook__item fz-lookbook__item--tall" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80');">
+      <div class="fz-lookbook__hover">
+        <span>Shop The Look</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <div class="fz-lookbook__column">
+      <a href="/collections" class="fz-lookbook__item fz-lookbook__item--short" style="background-image: url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80');">
+        <div class="fz-lookbook__hover">
+          <span>Shop The Look</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      <a href="/collections" class="fz-lookbook__item fz-lookbook__item--short" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80');">
+        <div class="fz-lookbook__hover">
+          <span>Shop The Look</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <a href="/collections" class="fz-lookbook__item fz-lookbook__item--tall" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80');">
+      <div class="fz-lookbook__hover">
+        <span>Shop The Look</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <a href="/collections" class="fz-lookbook__item fz-lookbook__item--tall" style="background-image: url('https://images.unsplash.com/photo-1520453803296-c39eabe2dab4?w=600&q=80');">
+      <div class="fz-lookbook__hover">
+        <span>Shop The Look</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="fz-lookbook__footer">
+    <a href="/collections" class="fz-lookbook__view-all">View All Styles →</a>
+  </div>
+</section>
+
+<style>
+.fz-lookbook {
+  padding: 80px 0;
+  background: #f1f0f9;
+  overflow: hidden;
+}
+
+.fz-lookbook__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.fz-lookbook__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin: 0 0 12px;
+}
+
+.fz-lookbook__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: #1a0533;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+}
+
+.fz-lookbook__sub {
+  color: #6b6b8a;
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.fz-lookbook__sub strong {
+  color: #7c3aed;
+}
+
+/* Grid layout */
+.fz-lookbook__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 560px;
+}
+
+.fz-lookbook__column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fz-lookbook__item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fz-lookbook__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 5, 51, 0.25);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.fz-lookbook__item:hover::after {
+  opacity: 1;
+}
+
+.fz-lookbook__item--tall {
+  min-height: 560px;
+}
+
+.fz-lookbook__item--short {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Hover badge */
+.fz-lookbook__hover {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  color: #1a0533;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 30px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.fz-lookbook__item:hover .fz-lookbook__hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Image zoom */
+.fz-lookbook__item {
+  background-size: 100%;
+  transition: background-size 0.6s ease;
+}
+
+.fz-lookbook__item:hover {
+  background-size: 108%;
+}
+
+.fz-lookbook__footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.fz-lookbook__view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  text-decoration: none;
+  border-bottom: 2px solid #7c3aed;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.fz-lookbook__view-all:hover {
+  color: #5b21b6;
+  border-color: #5b21b6;
+}
+
+@media (max-width: 989px) {
+  .fz-lookbook__grid {
+    grid-template-columns: 1fr 1fr;
+    min-height: auto;
+  }
+  .fz-lookbook__item--tall {
+    min-height: 320px;
+  }
+  .fz-lookbook__column {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 749px) {
+  .fz-lookbook {
+    padding: 60px 0;
+  }
+  .fz-lookbook__grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .fz-lookbook__item--tall {
+    min-height: 75vw;
+  }
+  .fz-lookbook__column {
+    display: contents;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Lookbook Grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Lookbook Grid"
+    }
+  ]
+}
+{% endschema %}
