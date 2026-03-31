@@ -267,20 +267,20 @@
      SUMMARY SIDEBAR
      =========================== */
   .fz-main-cart__summary {
-    background: linear-gradient(135deg, #0d0d1a 0%, #1a0533 100%);
-    color: #ffffff;
-    border: 1px solid rgba(124, 58, 237, 0.25);
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text, #1a0533);
+    border: 1px solid var(--color-border, #e2e0f0);
     border-radius: var(--radius-md, 12px);
     padding: 1.4rem;
     height: fit-content;
     position: sticky;
     top: 6rem;
-    box-shadow: var(--shadow-lg, 0 20px 60px rgba(26, 5, 51, 0.18));
+    box-shadow: var(--shadow-md, 0 8px 30px rgba(26, 5, 51, 0.12));
   }
 
   .fz-main-cart__summary h3 {
     margin: 0 0 1rem;
-    color: #ffffff;
+    color: var(--color-primary, #1a0533);
     font-family: var(--font-heading, "Bebas Neue", sans-serif);
     font-size: var(--fs-xl, 1.8rem);
     letter-spacing: 0.04em;
@@ -291,7 +291,7 @@
   .fz-main-cart__summary-rows {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid var(--color-border, #e2e0f0);
   }
 
   .fz-main-cart__subtotal {
@@ -303,7 +303,7 @@
     font-size: var(--fs-base, 1rem);
   }
   .fz-main-cart__subtotal span {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-muted, #6b6b8a);
   }
   .fz-main-cart__subtotal strong {
     color: var(--color-accent-alt, #f59e0b);
@@ -315,7 +315,7 @@
     align-items: center;
     gap: 0.45rem;
     margin: 0;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-muted, #6b6b8a);
     font-size: var(--fs-xs, 0.76rem);
   }
   .fz-main-cart__shipping-note svg {
@@ -335,14 +335,14 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-muted, #6b6b8a);
   }
   .fz-main-cart__summary textarea {
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid var(--color-border, #e2e0f0);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
+    background: var(--color-secondary, #f1f0f9);
+    color: var(--color-text, #1a0533);
     padding: 0.6rem 0.7rem;
     font-family: var(--font-body, "Outfit", sans-serif);
     font-size: var(--fs-sm, 0.88rem);
@@ -350,11 +350,12 @@
     transition: border-color 180ms ease;
   }
   .fz-main-cart__summary textarea::placeholder {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--color-muted, #6b6b8a);
   }
   .fz-main-cart__summary textarea:focus {
     outline: none;
-    border-color: rgba(124, 58, 237, 0.6);
+    border-color: var(--color-accent, #7c3aed);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
   }
 
   /* ---------- BUTTONS ---------- */
@@ -379,13 +380,13 @@
 
   .fz-main-cart__update {
     background: transparent;
-    border-color: rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.9);
+    border-color: var(--color-border, #e2e0f0);
+    color: var(--color-text, #1a0533);
     margin-bottom: 0.6rem;
   }
   .fz-main-cart__update:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: var(--color-secondary, #f1f0f9);
+    border-color: var(--color-accent, #7c3aed);
     transform: translateY(-1px);
   }
 
@@ -409,20 +410,20 @@
     gap: 1rem;
     margin-top: 1rem;
     padding-top: 0.9rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--color-border, #e2e0f0);
   }
   .fz-main-cart__trust span {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--color-muted, #6b6b8a);
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
   .fz-main-cart__trust svg {
-    color: var(--color-accent-alt, #f59e0b);
+    color: var(--color-accent, #7c3aed);
   }
 
   /* ===========================
