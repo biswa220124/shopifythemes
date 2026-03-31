@@ -4,18 +4,18 @@
    CSS CUSTOM PROPERTIES
    =========================== */
 :root {
-  /* NEW Brand Color Palette — Deep Violet + Goldblack */
-  --color-primary:       #1a0533;   /* deep dark violet */
-  --color-primary-mid:   #6d28d9;   /* vivid violet */
-  --color-primary-light: #8b5cf6;   /* soft violet */
-  --color-accent:        #7c3aed;   /* brand violet */
-  --color-accent-alt:    #f59e0b;   /* gold accent */
-  --color-secondary:     #f1f0f9;   /* cool off-white */
+  /* Brand Color Palette — Warm Earthy (DesiMinimals-inspired) */
+  --color-primary:       #2c2320;   /* deep warm brown */
+  --color-primary-mid:   #c27a5a;   /* mid terracotta (hover) */
+  --color-primary-light: #d4886b;   /* soft peach */
+  --color-accent:        #d4886b;   /* brand peach / terracotta */
+  --color-accent-alt:    #c27a5a;   /* deeper terracotta */
+  --color-secondary:     #f5f0eb;   /* warm cream (60% primary bg) */
   --color-surface:       #ffffff;
-  --color-dark:          #0d0d1a;   /* near black */
-  --color-text:          #1a0533;
-  --color-muted:         #6b6b8a;
-  --color-border:        #e2e0f0;
+  --color-dark:          #2c2320;   /* near black warm */
+  --color-text:          #2c2320;
+  --color-muted:         #8c7b73;
+  --color-border:        #e4ddd7;
   --color-white:         #ffffff;
 
   /* Typography */
@@ -43,9 +43,9 @@
   --section-lg:    clamp(4rem, 7vw, 6.4rem);
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(26, 5, 51, 0.08);
-  --shadow-md: 0 8px 30px rgba(26, 5, 51, 0.12);
-  --shadow-lg: 0 20px 60px rgba(26, 5, 51, 0.18);
+  --shadow-sm: 0 2px 8px rgba(44, 35, 32, 0.08);
+  --shadow-md: 0 8px 30px rgba(44, 35, 32, 0.12);
+  --shadow-lg: 0 20px 60px rgba(44, 35, 32, 0.18);
 }
 
 /* ===========================
@@ -299,7 +299,7 @@ h3 { font-size: var(--fs-xl); }
 .fz-section-divider {
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-alt));
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
   border-radius: 99px;
   margin: 0 auto 32px;
 }
