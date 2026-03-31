@@ -40,7 +40,7 @@
 <style>
 .fz-discount-banner {
   padding: clamp(60px, 8vw, 100px) 20px;
-  background: linear-gradient(135deg, #2c2320 0%, #2c2320 100%);
+  background: var(--color-secondary, #f5f0eb);
 }
 
 .fz-discount-banner__inner {
@@ -61,38 +61,41 @@
 
 .fz-discount-banner__card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 60px rgba(44, 35, 32, 0.18);
 }
 
-/* Animated background shimmer */
+/* Subtle shimmer overlay */
 .fz-discount-banner__card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
   pointer-events: none;
 }
 
+/* Card 1: Warm terracotta/rust */
 .fz-discount-banner__card--fire {
-  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 40%, #b45309 100%);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: linear-gradient(135deg, #c27a5a 0%, #d4886b 50%, #b5654a 100%);
+  border: 1px solid rgba(194, 122, 90, 0.3);
 }
 
+/* Card 2: Warm mocha/brown */
 .fz-discount-banner__card--purple {
-  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4c1d95 100%);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: linear-gradient(135deg, #6b5347 0%, #7a6458 50%, #5a4640 100%);
+  border: 1px solid rgba(107, 83, 71, 0.3);
 }
 
+/* Card 3: Warm sage/olive */
 .fz-discount-banner__card--teal {
-  background: linear-gradient(135deg, #042f2e 0%, #115e59 40%, #0e7490 100%);
-  border: 1px solid rgba(20, 184, 166, 0.3);
+  background: linear-gradient(135deg, #6b7c5e 0%, #7d8e6f 50%, #5a6b4d 100%);
+  border: 1px solid rgba(107, 124, 94, 0.3);
 }
 
 .fz-discount-banner__badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   color: #fff;
   font-size: 0.7rem;
@@ -102,7 +105,7 @@
   padding: 5px 12px;
   border-radius: 30px;
   margin-bottom: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .fz-discount-banner__title {
@@ -113,11 +116,11 @@
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin: 0 0 12px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 6px rgba(44, 35, 32, 0.2);
 }
 
 .fz-discount-banner__subtitle {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.88rem;
   line-height: 1.6;
   margin: 0 0 24px;
@@ -151,12 +154,12 @@
 
 .fz-discount-banner__btn:hover {
   transform: translateY(-2px);
-  filter: brightness(1.1);
+  filter: brightness(1.05);
 }
 
 .fz-discount-banner__btn--primary {
   background: #ffffff;
-  color: #111111;
+  color: #2c2320;
 }
 
 .fz-discount-banner__btn--light {
@@ -180,7 +183,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   color: #fff;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   border: 1px dashed rgba(255,255,255,0.4);
   padding: 6px 14px;
   border-radius: 6px;
@@ -189,12 +192,12 @@
 }
 
 .fz-discount-banner__code-box:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .fz-discount-banner__trust {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   font-weight: 600;
   letter-spacing: 0.05em;
 }
