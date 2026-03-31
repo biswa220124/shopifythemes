@@ -1,17 +1,21 @@
 <section class="fz-main-cart section">
   <div class="container">
-    <h1>Your Bag</h1>
+    <div class="fz-main-cart__header">
+      <p class="fz-main-cart__subheading">Shopping</p>
+      <h1>Your Bag</h1>
+      <div class="fz-section-divider" style="margin: 0.8rem 0 0;"></div>
+    </div>
 
     {% if cart.item_count > 0 %}
       <form action="{{ routes.cart_url }}" method="post" novalidate>
         <div class="fz-main-cart__layout">
           <div class="fz-main-cart__items">
             {% for item in cart.items %}
-              <article class="fz-main-cart__item">
+              <article class="fz-main-cart__item" data-reveal>
                 <a class="fz-main-cart__image" href="{{ item.url }}">
                   {% if item.image %}
                     <img
-                      src="{{ item.image | image_url: width: 360 }}"
+                      src="{{ item.image | image_url: width: 460 }}"
                       alt="{{ item.image.alt | default: item.product.title | escape }}"
                       loading="lazy"
                     >
@@ -29,206 +33,444 @@
 
                   <div class="fz-main-cart__actions">
                     <label for="Quantity-{{ item.key }}">Qty</label>
-                    <input
-                      id="Quantity-{{ item.key }}"
-                      type="number"
-                      name="updates[]"
-                      value="{{ item.quantity }}"
-                      min="0"
-                    >
-                    <a href="{{ item.url_to_remove }}" class="fz-main-cart__remove">Remove</a>
+                    <div class="fz-main-cart__qty-wrap">
+                      <input
+                        id="Quantity-{{ item.key }}"
+                        type="number"
+                        name="updates[]"
+                        value="{{ item.quantity }}"
+                        min="0"
+                      >
+                    </div>
+                    <a href="{{ item.url_to_remove }}" class="fz-main-cart__remove">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                      Remove
+                    </a>
                   </div>
                 </div>
               </article>
             {% endfor %}
           </div>
 
-          <aside class="fz-main-cart__summary">
+          <aside class="fz-main-cart__summary" data-reveal>
             <h3>Order Summary</h3>
-            <p class="fz-main-cart__subtotal">
-              <span>Subtotal</span>
-              <strong>{{ cart.total_price | money }}</strong>
-            </p>
 
-            <label for="CartNote">Order note</label>
-            <textarea id="CartNote" name="note" rows="4">{{ cart.note }}</textarea>
+            <div class="fz-main-cart__summary-rows">
+              <p class="fz-main-cart__subtotal">
+                <span>Subtotal</span>
+                <strong>{{ cart.total_price | money }}</strong>
+              </p>
+              <p class="fz-main-cart__shipping-note">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                Free shipping on orders above ₹999
+              </p>
+            </div>
 
-            <button type="submit" name="update" class="fz-main-cart__update">Update Bag</button>
-            <button type="submit" name="checkout" class="fz-main-cart__checkout">Checkout</button>
+            <div class="fz-main-cart__note-wrap">
+              <label for="CartNote">Order note</label>
+              <textarea id="CartNote" name="note" rows="3" placeholder="Instructions for your order…">{{ cart.note }}</textarea>
+            </div>
+
+            <button type="submit" name="update" class="fz-main-cart__update">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              Update Bag
+            </button>
+            <button type="submit" name="checkout" class="fz-main-cart__checkout">
+              Checkout — {{ cart.total_price | money }}
+            </button>
+
+            <div class="fz-main-cart__trust">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Secure checkout
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                100% safe payments
+              </span>
+            </div>
           </aside>
         </div>
       </form>
     {% else %}
       <div class="fz-main-cart__empty">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         <p>Your bag is currently empty.</p>
-        <a href="{{ routes.collections_url }}">Continue shopping</a>
+        <a href="{{ routes.collections_url }}" class="btn btn--primary">Continue Shopping</a>
       </div>
     {% endif %}
   </div>
 </section>
 
 <style>
+  /* ===========================
+     CART — ALIGNED TO THEME
+     =========================== */
   .fz-main-cart {
-    background: #ececec;
-    color: #111111;
+    background: var(--color-secondary, #f1f0f9);
+    color: var(--color-text, #1a0533);
+  }
+
+  /* ---------- HEADER ---------- */
+  .fz-main-cart__header {
+    margin-bottom: 2rem;
+  }
+  .fz-main-cart__subheading {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-body, "Outfit", sans-serif);
+    font-size: var(--fs-xs, 0.76rem);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent, #7c3aed);
   }
   .fz-main-cart h1 {
-    margin: 0 0 1.2rem;
-    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-    font-size: clamp(2rem, 6vw, 3.8rem);
+    margin: 0;
+    font-family: var(--font-heading, "Bebas Neue", sans-serif);
+    font-size: var(--fs-2xl, clamp(2.1rem, 1.4rem + 2.6vw, 3.9rem));
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    color: var(--color-primary, #1a0533);
   }
+
+  /* ---------- LAYOUT ---------- */
   .fz-main-cart__layout {
     display: grid;
     grid-template-columns: 1.6fr 0.9fr;
-    gap: 1.4rem;
+    gap: 1.6rem;
+    align-items: start;
   }
+
+  /* ---------- ITEM LIST ---------- */
   .fz-main-cart__items {
     display: grid;
-    gap: 0.85rem;
+    gap: 1rem;
   }
+
   .fz-main-cart__item {
     display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 0.9rem;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    padding: 0.75rem;
+    grid-template-columns: 130px 1fr;
+    gap: 1.1rem;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e0f0);
+    border-radius: var(--radius-md, 12px);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm, 0 2px 8px rgba(26, 5, 51, 0.08));
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .fz-main-cart__item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md, 0 8px 30px rgba(26, 5, 51, 0.12));
+  }
+
+  /* ---------- IMAGE ---------- */
+  .fz-main-cart__image {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
   }
   .fz-main-cart__image img {
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
   }
+  .fz-main-cart__item:hover .fz-main-cart__image img {
+    transform: scale(1.05);
+  }
+
+  /* ---------- CONTENT ---------- */
   .fz-main-cart__content h2 {
-    margin: 0 0 0.3rem;
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
+    margin: 0 0 0.25rem;
+    font-family: var(--font-body, "Outfit", sans-serif);
+    font-size: var(--fs-base, 1rem);
+    font-weight: 600;
+    text-transform: none;
+    line-height: 1.35;
   }
   .fz-main-cart__content h2 a {
-    color: #111111;
+    color: var(--color-primary, #1a0533);
     text-decoration: none;
+    transition: color 160ms ease;
   }
+  .fz-main-cart__content h2 a:hover {
+    color: var(--color-accent, #7c3aed);
+  }
+
   .fz-main-cart__variant {
-    margin: 0 0 0.35rem;
-    color: #555;
-    font-size: 0.84rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .fz-main-cart__price {
-    margin: 0 0 0.55rem;
-    color: #ff4500;
-    font-weight: 700;
-  }
-  .fz-main-cart__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-  .fz-main-cart__actions label {
-    font-size: 0.74rem;
+    margin: 0 0 0.3rem;
+    color: var(--color-muted, #6b6b8a);
+    font-size: var(--fs-xs, 0.78rem);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-  .fz-main-cart__actions input {
-    width: 4.4rem;
-    min-height: 2rem;
-    border: 1px solid #111111;
-    background: transparent;
-    padding: 0.2rem 0.45rem;
+
+  .fz-main-cart__price {
+    margin: 0 0 0.65rem;
+    color: var(--color-accent, #7c3aed);
+    font-weight: 700;
+    font-size: var(--fs-lg, 1.15rem);
   }
+
+  /* ---------- ACTIONS ---------- */
+  .fz-main-cart__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .fz-main-cart__actions label {
+    font-size: var(--fs-xs, 0.74rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted, #6b6b8a);
+    font-weight: 500;
+  }
+
+  .fz-main-cart__qty-wrap input {
+    width: 4.2rem;
+    min-height: 2.2rem;
+    border: 1px solid var(--color-border, #e2e0f0);
+    border-radius: 6px;
+    background: var(--color-secondary, #f1f0f9);
+    color: var(--color-text, #1a0533);
+    padding: 0.25rem 0.5rem;
+    font-family: var(--font-body, "Outfit", sans-serif);
+    font-size: var(--fs-sm, 0.88rem);
+    text-align: center;
+    transition: border-color 180ms ease;
+  }
+  .fz-main-cart__qty-wrap input:focus {
+    outline: none;
+    border-color: var(--color-accent, #7c3aed);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  }
+
   .fz-main-cart__remove {
-    margin-left: 0.4rem;
-    color: #111111;
-    font-size: 0.8rem;
-    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: auto;
+    color: var(--color-muted, #6b6b8a);
+    font-size: var(--fs-xs, 0.78rem);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 160ms ease;
   }
+  .fz-main-cart__remove:hover {
+    color: #ef4444;
+  }
+
+  /* ===========================
+     SUMMARY SIDEBAR
+     =========================== */
   .fz-main-cart__summary {
-    background: #111111;
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a0533 100%);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 1rem;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    border-radius: var(--radius-md, 12px);
+    padding: 1.4rem;
     height: fit-content;
+    position: sticky;
+    top: 6rem;
+    box-shadow: var(--shadow-lg, 0 20px 60px rgba(26, 5, 51, 0.18));
   }
+
   .fz-main-cart__summary h3 {
-    margin: 0 0 0.8rem;
+    margin: 0 0 1rem;
     color: #ffffff;
-    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-    font-size: 1.7rem;
+    font-family: var(--font-heading, "Bebas Neue", sans-serif);
+    font-size: var(--fs-xl, 1.8rem);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+    line-height: 1;
   }
+
+  .fz-main-cart__summary-rows {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
   .fz-main-cart__subtotal {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 0.7rem;
-    margin: 0 0 0.9rem;
+    margin: 0 0 0.6rem;
+    font-size: var(--fs-base, 1rem);
+  }
+  .fz-main-cart__subtotal span {
+    color: rgba(255, 255, 255, 0.8);
   }
   .fz-main-cart__subtotal strong {
-    color: #ff4500;
+    color: var(--color-accent-alt, #f59e0b);
+    font-size: var(--fs-lg, 1.15rem);
+  }
+
+  .fz-main-cart__shipping-note {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--fs-xs, 0.76rem);
+  }
+  .fz-main-cart__shipping-note svg {
+    flex-shrink: 0;
+    color: var(--color-accent-alt, #f59e0b);
+  }
+
+  /* ---------- NOTE ---------- */
+  .fz-main-cart__note-wrap {
+    margin-bottom: 1rem;
   }
   .fz-main-cart__summary label {
     display: block;
-    margin-bottom: 0.35rem;
-    font-size: 0.72rem;
+    margin-bottom: 0.4rem;
+    font-family: var(--font-body, "Outfit", sans-serif);
+    font-size: var(--fs-xs, 0.72rem);
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
   }
   .fz-main-cart__summary textarea {
     width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
     color: #ffffff;
-    padding: 0.55rem;
-    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.7rem;
+    font-family: var(--font-body, "Outfit", sans-serif);
+    font-size: var(--fs-sm, 0.88rem);
+    resize: vertical;
+    transition: border-color 180ms ease;
   }
+  .fz-main-cart__summary textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  .fz-main-cart__summary textarea:focus {
+    outline: none;
+    border-color: rgba(124, 58, 237, 0.6);
+  }
+
+  /* ---------- BUTTONS ---------- */
   .fz-main-cart__update,
   .fz-main-cart__checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
     width: 100%;
-    min-height: 2.65rem;
+    min-height: 2.8rem;
     border: 1px solid transparent;
-    font-size: 0.72rem;
+    border-radius: 8px;
+    font-family: var(--font-body, "Outfit", sans-serif);
+    font-size: var(--fs-xs, 0.76rem);
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.22s ease;
   }
+
   .fz-main-cart__update {
     background: transparent;
-    border-color: rgba(255, 255, 255, 0.4);
-    color: #ffffff;
-    margin-bottom: 0.55rem;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.6rem;
   }
+  .fz-main-cart__update:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+  }
+
   .fz-main-cart__checkout {
-    background: #ff4500;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
     color: #ffffff;
-    border-color: #ff4500;
+    border-color: #7c3aed;
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.35);
   }
+  .fz-main-cart__checkout:hover {
+    background: linear-gradient(135deg, #6d28d9, #5b21b6);
+    border-color: #6d28d9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(124, 58, 237, 0.5);
+  }
+
+  /* ---------- TRUST ---------- */
+  .fz-main-cart__trust {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .fz-main-cart__trust span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .fz-main-cart__trust svg {
+    color: var(--color-accent-alt, #f59e0b);
+  }
+
+  /* ===========================
+     EMPTY STATE
+     =========================== */
   .fz-main-cart__empty {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(17, 17, 17, 0.1);
-    padding: 1rem;
+    text-align: center;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e0f0);
+    border-radius: var(--radius-md, 12px);
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .fz-main-cart__empty svg {
+    color: var(--color-muted, #6b6b8a);
+    margin-bottom: 1rem;
   }
   .fz-main-cart__empty p {
-    margin: 0 0 0.75rem;
+    margin: 0 0 1.2rem;
+    color: var(--color-muted, #6b6b8a);
+    font-size: var(--fs-lg, 1.15rem);
   }
-  .fz-main-cart__empty a {
-    color: #ff4500;
-    text-decoration: none;
-    font-weight: 600;
-  }
+
+  /* ===========================
+     RESPONSIVE
+     =========================== */
   @media (max-width: 989px) {
     .fz-main-cart__layout {
       grid-template-columns: 1fr;
     }
+    .fz-main-cart__summary {
+      position: static;
+    }
   }
+
   @media (max-width: 749px) {
     .fz-main-cart__item {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100px 1fr;
+      gap: 0.85rem;
+      padding: 0.8rem;
+    }
+    .fz-main-cart__actions {
+      flex-wrap: wrap;
+    }
+    .fz-main-cart__trust {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 </style>
