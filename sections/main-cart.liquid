@@ -11,7 +11,7 @@
         <div class="fz-main-cart__layout">
           <div class="fz-main-cart__items">
             {% for item in cart.items %}
-              <article class="fz-main-cart__item" data-reveal>
+              <article class="fz-main-cart__item">
                 <a class="fz-main-cart__image" href="{{ item.url }}">
                   {% if item.image %}
                     <img
@@ -52,7 +52,7 @@
             {% endfor %}
           </div>
 
-          <aside class="fz-main-cart__summary" data-reveal>
+          <aside class="fz-main-cart__summary">
             <h3>Order Summary</h3>
 
             <div class="fz-main-cart__summary-rows">
