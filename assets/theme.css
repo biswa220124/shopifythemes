@@ -1,26 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap");
 
 /* ===========================
    CSS CUSTOM PROPERTIES
    =========================== */
 :root {
-  /* PREMIUM Brand Color Palette — Midnight Onyx + Champagne Gold */
-  --color-primary:       #0d0e12;   /* midnight onyx */
-  --color-primary-mid:   #1a1c23;   /* dark slate */
-  --color-primary-light: #2d313c;   /* soft grey */
-  --color-accent:        #d4af37;   /* champagne gold */
-  --color-accent-alt:    #c4a654;   /* muted gold */
-  --color-secondary:     #f8f9fa;   /* cool off-white */
+  /* NEW Brand Color Palette — Deep Violet + Goldblack */
+  --color-primary:       #1a0533;   /* deep dark violet */
+  --color-primary-mid:   #6d28d9;   /* vivid violet */
+  --color-primary-light: #8b5cf6;   /* soft violet */
+  --color-accent:        #7c3aed;   /* brand violet */
+  --color-accent-alt:    #f59e0b;   /* gold accent */
+  --color-secondary:     #f1f0f9;   /* cool off-white */
   --color-surface:       #ffffff;
-  --color-dark:          #050507;   /* true black */
-  --color-text:          #0d0e12;
+  --color-dark:          #0d0d1a;   /* near black */
+  --color-text:          #1a0533;
   --color-muted:         #6b6b8a;
   --color-border:        #e2e0f0;
   --color-white:         #ffffff;
 
   /* Typography */
-  --font-heading: "Playfair Display", "Times New Roman", serif;
-  --font-body:    "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body:    "Outfit", "Inter", "Helvetica Neue", Arial, sans-serif;
 
   /* Fluid font scale */
   --fs-xs:   clamp(0.72rem, 0.7rem + 0.12vw, 0.8rem);
@@ -98,9 +98,8 @@ img {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  line-height: 1.15;
-  letter-spacing: 0.02em;
-  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.05;
 }
 
 h1 { font-size: var(--fs-hero); }
@@ -182,9 +181,9 @@ h3 { font-size: var(--fs-xl); }
 }
 
 .product-card__title {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-primary);
   text-transform: none;
   letter-spacing: 0;

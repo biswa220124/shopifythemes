@@ -1,8 +1,8 @@
-<section class="fz-discount-banner" data-reveal>
+<section class="fz-discount-banner">
   <div class="fz-discount-banner__inner">
 
     <!-- Banner 1: Flash Sale -->
-    <div class="fz-discount-banner__card fz-discount-banner__card--onyx-gold">
+    <div class="fz-discount-banner__card fz-discount-banner__card--fire">
       <div class="fz-discount-banner__badge">🔥 Flash Sale</div>
       <h3 class="fz-discount-banner__title">UP TO 40% OFF</h3>
       <p class="fz-discount-banner__subtitle">On all oversized tees & hoodies. Limited time only.</p>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- Banner 2: New Arrival -->
-    <div class="fz-discount-banner__card fz-discount-banner__card--midnight-rose">
+    <div class="fz-discount-banner__card fz-discount-banner__card--purple">
       <div class="fz-discount-banner__badge">✨ New Arrival</div>
       <h3 class="fz-discount-banner__title">FIRST ORDER<br>EXTRA 15% OFF</h3>
       <p class="fz-discount-banner__subtitle">Use code <strong>FLYNTRA15</strong> at checkout. Welcome gift!</p>
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Banner 3: Free Shipping -->
-    <div class="fz-discount-banner__card fz-discount-banner__card--slate-silver">
+    <div class="fz-discount-banner__card fz-discount-banner__card--teal">
       <div class="fz-discount-banner__badge">🚀 Free Shipping</div>
       <h3 class="fz-discount-banner__title">FREE DELIVERY<br>ABOVE ₹999</h3>
       <p class="fz-discount-banner__subtitle">Pan India delivery on all prepaid orders above ₹999!</p>
@@ -46,33 +46,17 @@
 .fz-discount-banner__inner {
   max-width: 1260px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 20px;
-  scrollbar-width: none; /* Firefox */
-}
-
-.fz-discount-banner__inner::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
 }
 
 .fz-discount-banner__card {
-  flex: 0 0 100%;
-  max-width: 400px;
-  scroll-snap-align: start;
   border-radius: 20px;
   padding: 36px 28px;
   position: relative;
   overflow: hidden;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-@media (min-width: 768px) {
-  .fz-discount-banner__card {
-    flex: 0 0 calc(33.333% - 16px);
-  }
 }
 
 .fz-discount-banner__card:hover {
@@ -89,19 +73,19 @@
   pointer-events: none;
 }
 
-.fz-discount-banner__card--onyx-gold {
-  background: linear-gradient(135deg, #0d0e12 0%, #1a1c23 40%, #2a2212 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+.fz-discount-banner__card--fire {
+  background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 40%, #b45309 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.fz-discount-banner__card--midnight-rose {
-  background: linear-gradient(135deg, #08090a 0%, #151114 40%, #301f25 100%);
-  border: 1px solid rgba(255, 182, 193, 0.2);
+.fz-discount-banner__card--purple {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4c1d95 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
-.fz-discount-banner__card--slate-silver {
-  background: linear-gradient(135deg, #111317 0%, #1c1f26 40%, #2b303b 100%);
-  border: 1px solid rgba(192, 192, 192, 0.2);
+.fz-discount-banner__card--teal {
+  background: linear-gradient(135deg, #042f2e 0%, #115e59 40%, #0e7490 100%);
+  border: 1px solid rgba(20, 184, 166, 0.3);
 }
 
 .fz-discount-banner__badge {
@@ -122,13 +106,14 @@
 }
 
 .fz-discount-banner__title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   color: #ffffff;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   margin: 0 0 12px;
-  text-transform: none;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .fz-discount-banner__subtitle {
@@ -216,8 +201,8 @@
 
 @media (max-width: 989px) {
   .fz-discount-banner__inner {
-    padding-left: 20px;
-    padding-right: 20px;
+    grid-template-columns: 1fr;
+    max-width: 520px;
   }
 }
 </style>
